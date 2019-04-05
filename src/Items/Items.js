@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 
 class Items extends Component {
 
-
-
     render() {
 
         const liStyle = {
@@ -23,18 +21,20 @@ class Items extends Component {
             fontSize: '28px',
             padding: '3px'
         }
+        console.log(this.props.basket)
+        return (         
+            this.props.basket.map((i) =>
+            <li style={liStyle}>
+                {i.item}
+                <span> £{i.price}</span>
+                <button style={btnStyle} onClick={this.props.click.bind(this, i.id)} >
+                    <span style={xStyle}>
+                        X
+                    </span>
+                </button>
+            </li>
+            ))
 
-        return this.props.basketItems.map((arrayitems) => (
-        <li style={liStyle}>
-            {this.props.oneItem}
-            <span> £{this.props.price}</span>
-            <button style={btnStyle} onClick={this.props.click.bind(this, this.props.id)} >
-                <span style={xStyle}>
-                    X
-                </span>
-            </button>
-        </li>
-        )
         
     }
 
