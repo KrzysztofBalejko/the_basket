@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+
 class Items extends Component {
 
     render() {
@@ -21,10 +22,10 @@ class Items extends Component {
             fontSize: '28px',
             padding: '3px'
         }
-        console.log(this.props.basket)
+ 
         return (         
             this.props.basket.map((i) =>
-            <li style={liStyle}>
+            <li style={liStyle} key={i.id}>
                 {i.item}
                 <span> £{i.price}</span>
                 <button style={btnStyle} onClick={this.props.click.bind(this, i.id)} >
@@ -33,7 +34,7 @@ class Items extends Component {
                     </span>
                 </button>
             </li>
-            ))
+        ))
 
         
     }

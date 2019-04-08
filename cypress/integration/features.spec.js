@@ -12,4 +12,9 @@ describe('Item', function (){
         cy.get('li').should('not.contain', 'cocacola')
     })
 
+    it ("adds new item to the list", function(){
+        cy.visit('http://localhost:3000')
+        cy.get('input').type('New item')
+        cy.get('li').should('contain', 'New item')
+    })
 })

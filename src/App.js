@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Items from './Items/Items'
+import AddItems from './Items/AddItems'
 
 class App extends Component {
 
@@ -18,6 +19,17 @@ class App extends Component {
        basketItems:[...this.state.basketItems.filter(items => items.id !== id)]
      })
    }
+
+  addItemHandler = (item) => {
+    const newItem = {
+      id: 5,
+      item: item,
+      price: 10 
+    }
+    this.setState({
+      basketItems:[...this.state.basketItems, newItem]
+    })
+  }
   
   render() {
 
@@ -33,6 +45,7 @@ class App extends Component {
             click={this.onClickHandler} 
           />
         </ul>
+        <AddItems btnclick={this.addItemHandler}/>
       </div>
     );
   }
