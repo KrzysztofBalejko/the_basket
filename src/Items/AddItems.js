@@ -4,7 +4,8 @@ import React, { Component } from 'react'
 class AddItem extends Component {
 
     state = {
-        item: ''
+        item: '',
+        price: ''
     }
 
     onSubmit = (e) => {
@@ -22,7 +23,7 @@ class AddItem extends Component {
             borderRadius: "5px",
             padding: '10px',
             marginRight: '-37px',
-            marginBottom: '10px',
+            marginBottom: '20px',
             marginTop: '-10px',
             textAlign: 'center',
             width: '24.8rem'
@@ -36,6 +37,7 @@ class AddItem extends Component {
             backgroundColor: 'rgba(0, 0, 0, 0.74)',
             color: 'white',
             padding: '10px',
+            marginTop: '-10px',
             marginRight: '-37px',
             textAlign: 'center',
             width: '26.1rem'
@@ -45,6 +47,8 @@ class AddItem extends Component {
             <div>
                 <form onSubmit={this.onSubmit}>
                     <input style={inputStyle} type='text' name='item' value={this.state.item} onChange={this.onChange} placeholder="Add Item"/>       
+                    <input style={inputStyle} type='text' name='price' value={this.state.price} onChange={this.onChange} placeholder="Add price"/>       
+
                     <button style={buttonStyle} type='submit' value="Submit">Add Item</button>
                 </form>
             </div>
