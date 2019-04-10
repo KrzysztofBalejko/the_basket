@@ -20,15 +20,8 @@ class App extends Component {
      })
    }
 
-  addItemHandler = (item) => {
-    const newItem = {
-      id: 5,
-      item: item,
-      price: 10 
-    }
-    this.setState({
-      basketItems:[...this.state.basketItems, newItem]
-    })
+  addItemHandler = (item) => {    
+    this.setState({ basketItems: [...this.state.basketItems, {id: 5, item: item, price: 10} ]})
   }
   
   render() {
