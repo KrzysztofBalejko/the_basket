@@ -24,6 +24,10 @@ class Items extends Component {
         }
     }
 
+    condition = (i, price) => {
+        
+    }
+
     render() {
 
         const btnStyle = {
@@ -41,7 +45,7 @@ class Items extends Component {
             this.props.basket.map((i) =>
             <li style={this.liRandomColor()} key={i.id}>
                 {i.item}
-                <span> £{i.price}</span>
+                {i.price !== '' ? <span> £{i.price}</span> : null}
                 <button style={btnStyle} onClick={this.props.click.bind(this, i.id)} >
                     <span style={xStyle}>
                         X

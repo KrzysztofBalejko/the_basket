@@ -14,8 +14,18 @@ describe('Item', function (){
 
     it ("adds new item to the list", function(){
         cy.visit('http://localhost:3000')
-        cy.get('input').type('New item')
+        cy.get('#newItem').type('New item')
         cy.get('button').click({ multiple: true, force: true })
         cy.get('li').should('contain', 'New item')
     })
+
+    it ("adds a price with a list item", function(){
+        cy.visit('http://localhost:3000')
+        cy.get('#newItem').type('New item')
+        cy.get('#newPrice').type('155')
+        cy.get('button').click({ multiple: true, force: true })
+        cy.get('li').should('contain', 'New item £155')
+    })
+
+
 })

@@ -10,8 +10,8 @@ class AddItem extends Component {
 
     onSubmit = (e) => {
         e.preventDefault()
-        this.props.btnclick(this.state.item)
-        this.setState({ item: '' })
+        this.props.btnclick(this.state.item, this.state.price)
+        this.setState({ item: '', price: '' })
     }
 
     onChange = (e) => this.setState({ [e.target.name]: e.target.value });
@@ -67,8 +67,8 @@ class AddItem extends Component {
         return(
             <div>
                 <form onSubmit={this.onSubmit}>
-                    <input style={inputStyle} type='text' name='item' value={this.state.item} onChange={this.onChange} placeholder="Add Item"/>
-                    <br/><span style={poundStyle}>£</span><input style={inputStyle} type='text' name='price' value={this.state.price} onChange={this.onChange} placeholder="Add price"/><span style={zerosStyle}>.00</span>        
+                    <input id='newItem' style={inputStyle} type='text' name='item' value={this.state.item} onChange={this.onChange} placeholder="Add Item"/>
+                    <br/><span style={poundStyle}>£</span><input id='newPrice' style={inputStyle} type='text' name='price' value={this.state.price} onChange={this.onChange} placeholder="Add price"/><span style={zerosStyle}>.00</span>        
                     <button style={buttonStyle} type='submit' value="Submit">Add Item</button>
                 </form>
             </div>
