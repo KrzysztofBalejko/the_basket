@@ -43,12 +43,32 @@ class AddItem extends Component {
             width: '26.1rem'
         }
 
+        const poundStyle = {
+            border: '1px solid black',
+            borderRadius: '5px',
+            position: 'absolute',
+            padding: '10px',
+            marginTop: '-10px',
+            color: 'white',
+            backgroundColor: 'rgba(0, 0, 0, 0.74)'
+        }
+
+        const zerosStyle = {
+            border: '1px solid black',
+            borderRadius: '5px',
+            position: 'absolute',
+            padding: '10px',
+            marginTop: '-10px',
+            marginLeft: '-15px',
+            color: 'white',
+            backgroundColor: 'rgba(0, 0, 0, 0.74)'
+        }
+
         return(
             <div>
                 <form onSubmit={this.onSubmit}>
-                    <input style={inputStyle} type='text' name='item' value={this.state.item} onChange={this.onChange} placeholder="Add Item"/>       
-                    <input style={inputStyle} type='text' name='price' value={this.state.price} onChange={this.onChange} placeholder="Add price"/>       
-
+                    <input style={inputStyle} type='text' name='item' value={this.state.item} onChange={this.onChange} placeholder="Add Item"/>
+                    <br/><span style={poundStyle}>£</span><input style={inputStyle} type='text' name='price' value={this.state.price} onChange={this.onChange} placeholder="Add price"/><span style={zerosStyle}>.00</span>        
                     <button style={buttonStyle} type='submit' value="Submit">Add Item</button>
                 </form>
             </div>
