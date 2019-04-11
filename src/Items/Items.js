@@ -24,10 +24,6 @@ class Items extends Component {
         }
     }
 
-    condition = (i, price) => {
-        
-    }
-
     render() {
 
         const btnStyle = {

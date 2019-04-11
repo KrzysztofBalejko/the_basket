@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Items from './Items/Items'
 import AddItems from './Items/AddItems'
+import Total from './Items/Total'
 
 class App extends Component {
 
@@ -32,6 +33,7 @@ class App extends Component {
 
     return (
       <div className="App">
+        <Total />
         <ul style={ulStyle}>
           <Items 
             basket={this.state.basketItems} 
