@@ -33,7 +33,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Total />
+        <Total basket={this.state.basketItems}/>
         <ul style={ulStyle}>
           <Items 
             basket={this.state.basketItems} 
