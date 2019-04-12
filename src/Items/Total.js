@@ -45,17 +45,15 @@ class Total extends Component {
         }
 
         const sumStyle = {
-            // position: 'absolute',
             float: 'right',
             marginTop: '20px',
             marginLeft: '280px',
             position: 'absolute',
-            // marginRight: '100px',
         }
 
         return(
             <div>
-                <span style={estTotalStyle}>Estimated Total:</span><span style={sumStyle}>{this.total(this.getSum)}</span><input style={totalStyle} type='text' name='total'/>
+                <span style={estTotalStyle}>Estimated Total:</span><span style={sumStyle}>{this.total(this.getSum)}</span><input style={totalStyle} type='text' name='total' disabled/>
             </div>
         )
     }

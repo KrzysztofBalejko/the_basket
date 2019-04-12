@@ -9,7 +9,7 @@ class App extends Component {
 
   state = {
     basketItems:[
-      {id: uuid.v4(), item: 'cocacola', price: 10},
+      {id: uuid.v4(), item: 'coca-cola', price: 10},
       {id: uuid.v4(), item: 'paracetamol', price: 15},
       {id: uuid.v4(), item: 'milk', price: 5},
       {id: uuid.v4(), item: 'eggs', price: 7}

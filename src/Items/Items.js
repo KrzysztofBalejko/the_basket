@@ -27,12 +27,14 @@ class Items extends Component {
     render() {
 
         const btnStyle = {
+            backgroundColor: 'rgba(0, 0, 0, 0.74)',
             float: 'right',
             borderRadius: '50%',
             margin: '-7px'
         }
         
         const xStyle = {
+            color: 'white',
             fontSize: '28px',
             padding: '3px'
         }
