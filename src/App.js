@@ -3,15 +3,16 @@ import './App.css';
 import Items from './Items/Items'
 import AddItems from './Items/AddItems'
 import Total from './Items/Total'
+import uuid from 'uuid'
 
 class App extends Component {
 
   state = {
     basketItems:[
-      {id: 1, item: 'cocacola', price: 10},
-      {id: 2, item: 'paracetamol', price: 15},
-      {id: 3, item: 'milk', price: 5},
-      {id: 4, item: 'eggs', price: 7}
+      {id: uuid.v4(), item: 'cocacola', price: 10},
+      {id: uuid.v4(), item: 'paracetamol', price: 15},
+      {id: uuid.v4(), item: 'milk', price: 5},
+      {id: uuid.v4(), item: 'eggs', price: 7}
     ]
   }
 
@@ -22,7 +23,7 @@ class App extends Component {
    }
 
   addItemHandler = (item, price) => {    
-    this.setState({ basketItems: [...this.state.basketItems, {id: 5, item: item, price: price} ]})
+    this.setState({ basketItems: [...this.state.basketItems, {id: uuid.v4(), item: item, price: price} ]})
   }
   
   render() {

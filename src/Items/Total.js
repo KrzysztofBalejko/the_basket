@@ -9,7 +9,7 @@ class Total extends Component {
     total = (getSum) => {
         let array = []
         this.props.basket.map((i) => {
-        array.push(i.price)
+        array.push(parseInt(i.price))
         })
         if (array.length !== 0){
             return array.reduce(getSum)
@@ -55,7 +55,7 @@ class Total extends Component {
 
         return(
             <div>
-                <span style={estTotalStyle}>Estimated Total:</span><span style={sumStyle}>{this.total(this.getSum)}</span><input id='#total' style={totalStyle} type='text' name='total'/>
+                <span style={estTotalStyle}>Estimated Total:</span><span style={sumStyle}>{this.total(this.getSum)}</span><input style={totalStyle} type='text' name='total'/>
             </div>
         )
     }

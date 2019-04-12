@@ -27,5 +27,16 @@ describe('Item', function (){
         cy.get('li').should('contain', 'New item £155')
     })
 
+    it ("displays total of the basket", function(){
+        cy.visit('http://localhost:3000')
+        for (let i of Array(4).keys()){
+            cy.get('button').click({ multiple: true, force: true })
+        };
+        cy.get('#newItem').type('New item')
+        cy.get('#newPrice').type('5')
+        cy.get('button').click({ multiple: true, force: true })
+        cy.get('span').should('contain', '5')
+    })
+
 
 })
