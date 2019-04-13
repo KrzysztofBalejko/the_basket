@@ -3,7 +3,9 @@ import './App.css';
 import Items from './Items/Items'
 import AddItems from './Items/AddItems'
 import Total from './Items/Total'
+import Bitcoin from './Items/Bitcoin'
 import uuid from 'uuid'
+
 
 class App extends Component {
 
@@ -35,6 +37,7 @@ class App extends Component {
     return (
       <div className="App">
         <Total basket={this.state.basketItems}/>
+        <Bitcoin />
         <ul style={ulStyle}>
           <Items 
             basket={this.state.basketItems} 
