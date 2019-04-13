@@ -23,30 +23,28 @@ class Total extends Component {
 
         const totalStyle = {
             border: '1px solid black',
-            borderRadius: "5px",
+            borderTopRightRadius: '25px',
+            borderTopLeftRadius: '25px',
             padding: '10px',
             marginRight: '-37px',
-            marginBottom: '20px',
-            marginTop: '10px',
             textAlign: 'center',
             width: '24.8rem'
         }
 
         const estTotalStyle = {
             border: '1px solid black',
-            borderRadius: '5px',
+            borderTopLeftRadius: '25px',
             borderBottomRightRadius: '25px',
             borderTopRightRadius: '25px',
             position: 'absolute',
             padding: '10px',
-            marginTop: '10px',
             color: 'white',
             backgroundColor: 'rgba(0, 0, 0, 0.74)'
         }
 
         const sumStyle = {
             float: 'right',
-            marginTop: '20px',
+            marginTop: '10px',
             marginLeft: '280px',
             position: 'absolute',
         }
