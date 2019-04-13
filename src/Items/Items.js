@@ -3,31 +3,21 @@ import React, { Component } from 'react'
 
 class Items extends Component {
 
-    
 
-    liRandomColor = () => {
-        
-        let textArray = [
-            {backgroundColor: 'rgba(143, 221, 246, 0.33)'},
-            {backgroundColor: 'rgba(246, 210, 139, 0.33)'},
-            {backgroundColor: 'rgba(189, 230, 170, 0.33)'},
-        ]
-        let randomIndex = Math.floor(Math.random() * textArray.length); 
-        let randomElement = textArray[randomIndex];
-        let liStyle = {}
-        return liStyle = {
+    render() {
+
+        const liStyle = {
             border: '1px solid black',
             borderRadius: "5px",
             padding: '10px',
             margin: '10px',
-            backgroundColor: randomElement.backgroundColor
+            backgroundColor: '#EE9542'
         }
-    }
-
-    render() {
 
         const btnStyle = {
+            border: '1px rgba(0, 0, 0, 0.74)',
             backgroundColor: 'rgba(0, 0, 0, 0.74)',
+            boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
             float: 'right',
             borderRadius: '50%',
             margin: '-7px'
@@ -41,7 +31,7 @@ class Items extends Component {
  
         return (         
             this.props.basket.map((i) =>
-            <li style={this.liRandomColor()} key={i.id}>
+            <li style={liStyle} key={i.id}>
                 {i.item}
                 {i.price !== '' ? <span> £{i.price}</span> : null}
                 <button style={btnStyle} onClick={this.props.click.bind(this, i.id)} >
