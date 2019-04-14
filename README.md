@@ -9,6 +9,10 @@ User should be able to:
 * Update existing items
 * Delete each of the items separately 
 * See the estimated total
+---------------
+# Application interface:
+
+![basket](./basket2.png)
 
 ---------------
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
