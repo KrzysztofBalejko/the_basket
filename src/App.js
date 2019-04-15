@@ -5,17 +5,38 @@ import AddItems from './Items/AddItems'
 import Total from './Items/Total'
 import Bitcoin from './Items/Bitcoin'
 import uuid from 'uuid'
-
+import axios from 'axios'
 
 class App extends Component {
 
   state = {
     basketItems:[
-      {id: uuid.v4(), item: 'coca-cola', price: 10},
-      {id: uuid.v4(), item: 'paracetamol', price: 15},
-      {id: uuid.v4(), item: 'milk', price: 5},
-      {id: uuid.v4(), item: 'eggs', price: 7}
+      {id: uuid.v4(), item: 'GPU', price: 150},
+      {id: uuid.v4(), item: 'RAM', price: 120},
+      {id: uuid.v4(), item: 'CPU', price: 50},
+      {id: uuid.v4(), item: 'Keyboard', price: 40}
+    ],
+    crypto:[
+      {btc: ''}
     ]
+  }
+
+  componentDidMount() {
+    axios.get(`https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=GBP`)
+    .then(res => {
+      const coinmarket = res.data;
+      this.setState({
+        crypto: [{btc: coinmarket.GBP}]
+      })
+    })
+  }
+  
+  bitcoinOnClickHandler = () => {
+    let total = document.getElementById('#total').innerHTML;
+    total = parseInt(total);
+    let bitcoinPrice = this.state.crypto[0].btc
+    let satoshiLimit = ((total / bitcoinPrice).toString()).slice(0,10);
+    document.getElementById('#total').innerHTML = satoshiLimit;
   }
 
   onClickHandler = (id) => {
@@ -29,7 +50,7 @@ class App extends Component {
   }
   
   render() {
-
+    
     const ulStyle = {
       listStyle: 'none'
     }
@@ -37,7 +58,9 @@ class App extends Component {
     return (
       <div className="App">
         <Total basket={this.state.basketItems}/>
-        <Bitcoin />
+        <Bitcoin 
+          btcBtn={this.bitcoinOnClickHandler}
+        />
         <ul style={ulStyle}>
           <Items 
             basket={this.state.basketItems} 

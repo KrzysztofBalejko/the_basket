@@ -45,7 +45,7 @@ class Bitcoin extends  Component {
                 <div style={box1Style}>
                     <p>1</p>
                 </div>
-                <button style={bitButtonStyle}></button>
+                <button style={bitButtonStyle} onClick={this.props.btcBtn}></button>
                 <div style={box2Style}>
                     <p>2</p>
                 </div>
