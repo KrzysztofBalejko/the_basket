@@ -18,6 +18,9 @@ class App extends Component {
     ],
     crypto:[
       {btc: ''}
+    ],
+    bitcoinButton:[
+      {btcClick: 0, oldPrice: 0}
     ]
   }
 
@@ -26,17 +29,33 @@ class App extends Component {
     .then(res => {
       const coinmarket = res.data;
       this.setState({
-        crypto: [{btc: coinmarket.GBP}]
+        crypto:[
+          {btc: coinmarket.GBP}
+        ]
       })
     })
   }
   
   bitcoinOnClickHandler = () => {
-    let total = document.getElementById('#total').innerHTML;
-    total = parseInt(total);
-    let bitcoinPrice = this.state.crypto[0].btc
-    let satoshiLimit = ((total / bitcoinPrice).toString()).slice(0,10);
-    document.getElementById('#total').innerHTML = satoshiLimit;
+    let total = parseInt(document.getElementById('#total').innerHTML);
+    let satoshiLimit = ((total / this.state.crypto[0].btc).toString()).slice(0,10);
+    let count = this.state.bitcoinButton[0].btcClick;
+
+    if(count % 2 ===  0){
+      this.setState({
+        bitcoinButton:[
+          {btcClick: count + 1, oldPrice: total}
+        ]
+      })
+      document.getElementById('#total').innerHTML = satoshiLimit;
+    }else{
+      this.setState({
+        bitcoinButton:[
+          {btcClick: count + 1}
+        ]
+      });
+      document.getElementById('#total').innerHTML = this.state.bitcoinButton[0].oldPrice;
+    }
   }
 
   onClickHandler = (id) => {
