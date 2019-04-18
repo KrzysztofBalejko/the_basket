@@ -36,9 +36,6 @@ class Bitcoin extends  Component {
             marginLeft: '-36px',
             boxShadow: 'inset 0px 4px 4px rgba(0, 0, 0, 0.25)'
         }
-        const bitBackgroundStyle = {
-            
-        }
 
         return(
             <div>
