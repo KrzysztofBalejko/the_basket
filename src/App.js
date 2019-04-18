@@ -4,6 +4,7 @@ import Items from './Items/Items'
 import AddItems from './Items/AddItems'
 import Total from './Items/Total'
 import Bitcoin from './Items/Bitcoin'
+import Dollar from './Items/Dollar'
 import uuid from 'uuid'
 import axios from 'axios'
 
@@ -19,11 +20,17 @@ class App extends Component {
     crypto:[
       {btc: ''}
     ],
+    currency:[
+      {usd: ''}
+    ],
     bitcoinButton:[
       {btcClick: 0, oldPrice: 0}
+    ],
+    dollarButton:[
+      {usdClick: 0, oldPrice: 0}
     ]
   }
-
+  
   componentDidMount() {
     axios.get(`https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=GBP`)
     .then(res => {
@@ -33,6 +40,16 @@ class App extends Component {
           {btc: coinmarket.GBP}
         ]
       })
+    })
+    axios.get(`https://api.exchangeratesapi.io/latest?base=GBP`)
+    .then(res => {
+      const usdExchange = res.data;
+      this.setState({
+        currency:[
+          {usd: parseFloat(usdExchange.rates.USD.toFixed(2))}
+        ],
+      })
+      console.log(this.state.currency[0].usd)
     })
   }
   
@@ -44,17 +61,39 @@ class App extends Component {
     if(count % 2 ===  0){
       this.setState({
         bitcoinButton:[
-          {btcClick: count + 1, oldPrice: total}
+          { btcClick: count + 1, oldPrice: total }
         ]
       })
       document.getElementById('#total').innerHTML = satoshiLimit;
     }else{
       this.setState({
         bitcoinButton:[
-          {btcClick: count + 1}
+          { btcClick: count + 1 } 
         ]
       });
       document.getElementById('#total').innerHTML = this.state.bitcoinButton[0].oldPrice;
+    }
+  }
+
+  
+
+  dollarOnClickHandler = () => {
+    let total = parseInt(document.getElementById('#total').innerHTML);
+    let count = this.state.dollarButton[0].usdClick;
+    if(count % 2 ===  0){
+      this.setState({
+        dollarButton:[
+          { usdClick: count + 1, oldPrice: total }
+        ]
+      })
+      document.getElementById('#total').innerHTML = this.state.currency[0].usd * total
+    }else{
+      this.setState({
+        dollarButton:[
+          { usdClick: count + 1 }
+        ]
+      });
+      document.getElementById('#total').innerHTML = this.state.dollarButton[0].oldPrice;
     }
   }
 
@@ -77,9 +116,7 @@ class App extends Component {
     return (
       <div className="App">
         <Total basket={this.state.basketItems}/>
-        <Bitcoin 
-          btcBtn={this.bitcoinOnClickHandler}
-        />
+        { 1 + 2 !== 3 ? <Bitcoin btcBtn={this.bitcoinOnClickHandler} /> : <Dollar dollarBtn={this.dollarOnClickHandler}/>}
         <ul style={ulStyle}>
           <Items 
             basket={this.state.basketItems} 
