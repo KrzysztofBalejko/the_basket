@@ -41,7 +41,7 @@ class Dollar extends Component {
                 <div style={box1Style}>
                     <p>1</p>
                 </div>
-                <button style={dollarButtonStyle} onClick={this.props.dollarBtn}></button>
+                <button id="dolBtn" style={dollarButtonStyle} onClick={this.props.dollarBtn}></button>
                 <div style={box2Style}>
                     <p>2</p>
                 </div>

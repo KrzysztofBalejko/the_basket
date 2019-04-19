@@ -8,8 +8,9 @@ import Dollar from './Items/Dollar'
 import uuid from 'uuid'
 import axios from 'axios'
 
-let DoubleC = true;
+let DoubleC = false;
 let btcClickCount = 0;
+let dollarClickCount = 0;
 let tempTotal = 0;
 
 class App extends Component {
@@ -27,8 +28,8 @@ class App extends Component {
     currency:[
       {usd: ''}
     ],
-    dollarButton:[
-      {usdClick: 0, oldPrice: 0}
+    refreshState:[
+      {refresh: false}
     ]
   }
   
@@ -54,55 +55,53 @@ class App extends Component {
   }
 
   bitcoinOnDoubleClickHandler = () => {
-    DoubleC = false;
+    btcClickCount += 2;
+    if(DoubleC){
+      DoubleC = false;
+    }else{
+      DoubleC = true;
+    }
+    console.log("dc:" + DoubleC)
+    this.setState({
+      refreshState:[
+        {refresh: true}
+      ]
+    })
+    
   }
 
   bitcoinOnClickHandler = () => {
     let total = parseInt(document.getElementById('#total').innerHTML);
     let satoshiLimit = ((total / this.state.crypto[0].btc).toString()).slice(0,10);
 
-    if (btcClickCount % 2 === 0){
+    if (btcClickCount === 0){
       btcClickCount += 1;
+      console.log(btcClickCount)
       tempTotal = total;
       document.getElementById('bitbtn').style.backgroundImage = "url(" + "https://i.ibb.co/CBJgqy4/pound.png" + ")"
       document.getElementById('#total').innerHTML = satoshiLimit;
     } else {
-      btcClickCount += 1;
+      btcClickCount -= 1;
+      console.log(btcClickCount)
       document.getElementById('bitbtn').style.backgroundImage = "url(" + "https://i.ibb.co/W0900fG/bitcoin.png" + ")"
       document.getElementById('#total').innerHTML = tempTotal;
     }
   }
 
-  // dollarOnClickHandler = () => {
-  //   //debugging >>
-  //   console.log(this.state.bitcoinButton[0].oldPrice)
-  //   if(this.state.bitcoinButton[0].oldPrice === 0){
-  //     document.getElementById('#total').innerHTML = 360;
-  //   }
-  //   console.log(this.state.bitcoinButton[0].oldPrice)
-  //   document.getElementById('#total').innerHTML = this.state.bitcoinButton[0].oldPrice;
-  //   //debugging <<
-  //   let total = parseInt(document.getElementById('#total').innerHTML);
-  //   let count = this.state.dollarButton[0].usdClick;
-  //   if(count % 2 ===  0){
-  //     this.setState({
-  //       dollarButton:[
-  //         { usdClick: count + 1, oldPrice: total }
-  //       ]
-  //     })
-  //     document.getElementById('#total').innerHTML = this.state.currency[0].usd * total
-  //     document.getElementById('dolBtn').style.backgroundImage = "url(" + "https://i.ibb.co/CBJgqy4/pound.png" + ")"
+  dollarOnClickHandler = () => {
 
-  //   }else{
-  //     this.setState({
-  //       dollarButton:[
-  //         { usdClick: count + 1 }
-  //       ]
-  //     });
-  //     document.getElementById('dolBtn').style.backgroundImage = "url(" + "https://i.ibb.co/CBJgqy4/pound.png" + ")"
-  //     document.getElementById('#total').innerHTML = this.state.dollarButton[0].oldPrice;
-  //   }
-  // }
+    if (btcClickCount === 2){
+      btcClickCount -= 2;
+      console.log('dollar handler')
+      document.getElementById('dolBtn').style.backgroundImage = "url(" + "https://i.ibb.co/CBJgqy4/pound.png" + ")"
+      document.getElementById('dolBtn').style.backgroundColor = '#EE9542'
+      document.getElementById('#total').innerHTML = this.state.currency[0].usd * tempTotal
+    } else if(btcClickCount === 0) {
+      btcClickCount += 2;
+      document.getElementById('dolBtn').style.backgroundImage = "url(" + "https://i.ibb.co/n3B2C1R/dollar.png" + ")"
+      document.getElementById('#total').innerHTML = tempTotal;
+    }
+  }
 
   onClickHandler = (id) => {
      this.setState({
@@ -119,11 +118,11 @@ class App extends Component {
     const ulStyle = {
       listStyle: 'none'
     }
-
+    console.log("Im doublec:" + DoubleC)
     return (
       <div className="App">
         <Total basket={this.state.basketItems}/>
-        { DoubleC ? <Bitcoin btcDoubleBtn={this.bitcoinOnDoubleClickHandler} btcBtn={this.bitcoinOnClickHandler} /> : <Dollar dollarBtn={this.dollarOnClickHandler}/>}
+        { DoubleC ? <Dollar dollarBtn={this.dollarOnClickHandler}/> : <Bitcoin btcDoubleBtn={this.bitcoinOnDoubleClickHandler} btcBtn={this.bitcoinOnClickHandler} />}
         <ul style={ulStyle}>
           <Items 
             basket={this.state.basketItems} 
