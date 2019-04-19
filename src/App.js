@@ -8,6 +8,8 @@ import Dollar from './Items/Dollar'
 import uuid from 'uuid'
 import axios from 'axios'
 
+let DoubleC = 1;
+
 class App extends Component {
 
   state = {
@@ -49,10 +51,13 @@ class App extends Component {
           {usd: parseFloat(usdExchange.rates.USD.toFixed(2))}
         ],
       })
-      console.log(this.state.currency[0].usd)
     })
   }
-  
+
+  bitcoinOnDoubleClickHandler = () => {
+    DoubleC = 2;
+  }
+
   bitcoinOnClickHandler = () => {
     let total = parseInt(document.getElementById('#total').innerHTML);
     let satoshiLimit = ((total / this.state.crypto[0].btc).toString()).slice(0,10);
@@ -64,38 +69,49 @@ class App extends Component {
           { btcClick: count + 1, oldPrice: total }
         ]
       })
+      document.getElementById('bitbtn').style.backgroundImage = "url(" + "https://i.ibb.co/CBJgqy4/pound.png" + ")"
       document.getElementById('#total').innerHTML = satoshiLimit;
     }else{
       this.setState({
         bitcoinButton:[
-          { btcClick: count + 1 } 
+          { btcClick: count + 1, oldPrice: total } 
         ]
       });
+      document.getElementById('bitbtn').style.backgroundImage = "url(" + "https://i.ibb.co/W0900fG/bitcoin.png" + ")"
       document.getElementById('#total').innerHTML = this.state.bitcoinButton[0].oldPrice;
     }
   }
 
-  
+  // dollarOnClickHandler = () => {
+  //   //debugging >>
+  //   console.log(this.state.bitcoinButton[0].oldPrice)
+  //   if(this.state.bitcoinButton[0].oldPrice === 0){
+  //     document.getElementById('#total').innerHTML = 360;
+  //   }
+  //   console.log(this.state.bitcoinButton[0].oldPrice)
+  //   document.getElementById('#total').innerHTML = this.state.bitcoinButton[0].oldPrice;
+  //   //debugging <<
+  //   let total = parseInt(document.getElementById('#total').innerHTML);
+  //   let count = this.state.dollarButton[0].usdClick;
+  //   if(count % 2 ===  0){
+  //     this.setState({
+  //       dollarButton:[
+  //         { usdClick: count + 1, oldPrice: total }
+  //       ]
+  //     })
+  //     document.getElementById('#total').innerHTML = this.state.currency[0].usd * total
+  //     document.getElementById('dolBtn').style.backgroundImage = "url(" + "https://i.ibb.co/CBJgqy4/pound.png" + ")"
 
-  dollarOnClickHandler = () => {
-    let total = parseInt(document.getElementById('#total').innerHTML);
-    let count = this.state.dollarButton[0].usdClick;
-    if(count % 2 ===  0){
-      this.setState({
-        dollarButton:[
-          { usdClick: count + 1, oldPrice: total }
-        ]
-      })
-      document.getElementById('#total').innerHTML = this.state.currency[0].usd * total
-    }else{
-      this.setState({
-        dollarButton:[
-          { usdClick: count + 1 }
-        ]
-      });
-      document.getElementById('#total').innerHTML = this.state.dollarButton[0].oldPrice;
-    }
-  }
+  //   }else{
+  //     this.setState({
+  //       dollarButton:[
+  //         { usdClick: count + 1 }
+  //       ]
+  //     });
+  //     document.getElementById('dolBtn').style.backgroundImage = "url(" + "https://i.ibb.co/CBJgqy4/pound.png" + ")"
+  //     document.getElementById('#total').innerHTML = this.state.dollarButton[0].oldPrice;
+  //   }
+  // }
 
   onClickHandler = (id) => {
      this.setState({
@@ -108,7 +124,7 @@ class App extends Component {
   }
   
   render() {
-    
+
     const ulStyle = {
       listStyle: 'none'
     }
@@ -116,7 +132,7 @@ class App extends Component {
     return (
       <div className="App">
         <Total basket={this.state.basketItems}/>
-        { 1 + 2 !== 3 ? <Bitcoin btcBtn={this.bitcoinOnClickHandler} /> : <Dollar dollarBtn={this.dollarOnClickHandler}/>}
+        { DoubleC % 2 !== 0 ? <Bitcoin btcDoubleBtn={this.bitcoinOnDoubleClickHandler} btcBtn={this.bitcoinOnClickHandler} /> : <Dollar dollarBtn={this.dollarOnClickHandler}/>}
         <ul style={ulStyle}>
           <Items 
             basket={this.state.basketItems} 
