@@ -8,7 +8,9 @@ import Dollar from './Items/Dollar'
 import uuid from 'uuid'
 import axios from 'axios'
 
-let DoubleC = 1;
+let DoubleC = true;
+let btcClickCount = 0;
+let tempTotal = 0;
 
 class App extends Component {
 
@@ -24,9 +26,6 @@ class App extends Component {
     ],
     currency:[
       {usd: ''}
-    ],
-    bitcoinButton:[
-      {btcClick: 0, oldPrice: 0}
     ],
     dollarButton:[
       {usdClick: 0, oldPrice: 0}
@@ -55,30 +54,22 @@ class App extends Component {
   }
 
   bitcoinOnDoubleClickHandler = () => {
-    DoubleC = 2;
+    DoubleC = false;
   }
 
   bitcoinOnClickHandler = () => {
     let total = parseInt(document.getElementById('#total').innerHTML);
     let satoshiLimit = ((total / this.state.crypto[0].btc).toString()).slice(0,10);
-    let count = this.state.bitcoinButton[0].btcClick;
 
-    if(count % 2 ===  0){
-      this.setState({
-        bitcoinButton:[
-          { btcClick: count + 1, oldPrice: total }
-        ]
-      })
+    if (btcClickCount % 2 === 0){
+      btcClickCount += 1;
+      tempTotal = total;
       document.getElementById('bitbtn').style.backgroundImage = "url(" + "https://i.ibb.co/CBJgqy4/pound.png" + ")"
       document.getElementById('#total').innerHTML = satoshiLimit;
-    }else{
-      this.setState({
-        bitcoinButton:[
-          { btcClick: count + 1, oldPrice: total } 
-        ]
-      });
+    } else {
+      btcClickCount += 1;
       document.getElementById('bitbtn').style.backgroundImage = "url(" + "https://i.ibb.co/W0900fG/bitcoin.png" + ")"
-      document.getElementById('#total').innerHTML = this.state.bitcoinButton[0].oldPrice;
+      document.getElementById('#total').innerHTML = tempTotal;
     }
   }
 
@@ -132,7 +123,7 @@ class App extends Component {
     return (
       <div className="App">
         <Total basket={this.state.basketItems}/>
-        { DoubleC % 2 !== 0 ? <Bitcoin btcDoubleBtn={this.bitcoinOnDoubleClickHandler} btcBtn={this.bitcoinOnClickHandler} /> : <Dollar dollarBtn={this.dollarOnClickHandler}/>}
+        { DoubleC ? <Bitcoin btcDoubleBtn={this.bitcoinOnDoubleClickHandler} btcBtn={this.bitcoinOnClickHandler} /> : <Dollar dollarBtn={this.dollarOnClickHandler}/>}
         <ul style={ulStyle}>
           <Items 
             basket={this.state.basketItems} 
