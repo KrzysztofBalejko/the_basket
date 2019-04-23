@@ -10,7 +10,6 @@ import axios from 'axios'
 
 let DoubleC = false;
 let btcClickCount = 0;
-let dollarClickCount = 0;
 let tempTotal = 0;
 
 class App extends Component {
@@ -56,15 +55,10 @@ class App extends Component {
 
   bitcoinOnDoubleClickHandler = () => {
     btcClickCount += 2;
-    if(DoubleC){
-      DoubleC = false;
-    }else{
-      DoubleC = true;
-    }
-    console.log("dc:" + DoubleC)
+    DoubleC ? (DoubleC = false) : (DoubleC = true);
     this.setState({
       refreshState:[
-        {refresh: true}
+        { refresh: true }
       ]
     })
     
@@ -76,13 +70,11 @@ class App extends Component {
 
     if (btcClickCount === 0){
       btcClickCount += 1;
-      console.log(btcClickCount)
       tempTotal = total;
       document.getElementById('bitbtn').style.backgroundImage = "url(" + "https://i.ibb.co/CBJgqy4/pound.png" + ")"
       document.getElementById('#total').innerHTML = satoshiLimit;
     } else {
       btcClickCount -= 1;
-      console.log(btcClickCount)
       document.getElementById('bitbtn').style.backgroundImage = "url(" + "https://i.ibb.co/W0900fG/bitcoin.png" + ")"
       document.getElementById('#total').innerHTML = tempTotal;
     }
@@ -92,7 +84,6 @@ class App extends Component {
 
     if (btcClickCount === 2){
       btcClickCount -= 2;
-      console.log('dollar handler')
       document.getElementById('dolBtn').style.backgroundImage = "url(" + "https://i.ibb.co/CBJgqy4/pound.png" + ")"
       document.getElementById('dolBtn').style.backgroundColor = '#EE9542'
       document.getElementById('#total').innerHTML = this.state.currency[0].usd * tempTotal
@@ -118,7 +109,7 @@ class App extends Component {
     const ulStyle = {
       listStyle: 'none'
     }
-    console.log("Im doublec:" + DoubleC)
+    
     return (
       <div className="App">
         <Total basket={this.state.basketItems}/>
