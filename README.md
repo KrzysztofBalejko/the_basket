@@ -1,6 +1,6 @@
 # The Shopping basket
 
-A little CRUD application that helps to estimate a total cost of your grocery shopping.
+A little CRUD application that helps to estimate a total cost of your shopping.
 
 User should be able to:
 
@@ -10,6 +10,13 @@ User should be able to:
 * Delete each of the items separately 
 * See the estimated total
 ---------------
+
+Additional functionality:
+
+* Calculates the total price in Bitcoin
+* With a double click user can see the total in USD
+* User can go back to GBP/USD exchange
+
 # Application interface:
 
 ![basket](./basket2.png)
