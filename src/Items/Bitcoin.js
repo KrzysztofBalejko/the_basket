@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import { NONAME } from 'dns';
 
 
 class Bitcoin extends  Component {
@@ -11,7 +12,7 @@ class Bitcoin extends  Component {
             width: '418px',
             padding: '0px',
             border: '1px solid black',
-            marginLeft: '48.5px'
+            // marginLeft: '48.5px'
         }
         const box2Style = {
             backgroundColor: 'rgba(0, 0, 0, 0.74)',
@@ -21,7 +22,7 @@ class Bitcoin extends  Component {
             border: '1px solid black',
             borderBottomRightRadius: '5px',
             borderBottomLeftRadius: '5px',
-            marginLeft: '48.5px'
+            // marginLeft: '48.5px'
         }
 
         const bitButtonStyle = {
@@ -29,11 +30,11 @@ class Bitcoin extends  Component {
             backgroundImage: "url(" + "https://i.ibb.co/W0900fG/bitcoin.png" + ")",
             backgroundSize: '100%',
             backgroundColor: '#EE9542',
-            padding: '3.7%',
+            padding: '56px',
             position: 'absolute',
             borderRadius: '50%',
             marginTop: '-55px',
-            marginLeft: '-36px',
+            marginLeft: '-50px',
             boxShadow: 'inset 0px 4px 4px rgba(0, 0, 0, 0.25)'
         }
 

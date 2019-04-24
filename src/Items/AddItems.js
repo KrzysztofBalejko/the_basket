@@ -22,9 +22,9 @@ class AddItem extends Component {
             border: '1px solid black',
             borderRadius: "5px",
             padding: '10px',
-            marginRight: '-37px',
-            marginBottom: '20px',
-            marginTop: '-10px',
+            // marginRight: '-37px',
+            marginBottom: '5px',
+            // marginTop: '-10px',
             textAlign: 'center',
             width: '24.8rem'
         }
@@ -37,8 +37,8 @@ class AddItem extends Component {
             backgroundColor: 'rgba(0, 0, 0, 0.74)',
             color: 'white',
             padding: '10px',
-            marginTop: '-10px',
-            marginRight: '-37px',
+            // marginTop: '-10px',
+            // marginRight: '-37px',
             textAlign: 'center',
             width: '26.1rem'
         }
@@ -48,7 +48,7 @@ class AddItem extends Component {
             borderRadius: '5px',
             position: 'absolute',
             padding: '10px',
-            marginTop: '-10px',
+            // marginTop: '-10px',
             color: 'white',
             backgroundColor: 'rgba(0, 0, 0, 0.74)'
         }
@@ -58,8 +58,8 @@ class AddItem extends Component {
             borderRadius: '5px',
             position: 'absolute',
             padding: '10px',
-            marginTop: '-10px',
-            marginLeft: '-15px',
+            // marginTop: '-10px',
+            marginLeft: '-53px',
             color: 'white',
             backgroundColor: 'rgba(0, 0, 0, 0.74)'
         }

@@ -10,7 +10,6 @@ class Dollar extends Component {
         width: '418px',
         padding: '0px',
         border: '1px solid black',
-        marginLeft: '48.5px'
     }
     const box2Style = {
         backgroundColor: 'rgba(0, 0, 0, 0.74)',
@@ -20,7 +19,6 @@ class Dollar extends Component {
         border: '1px solid black',
         borderBottomRightRadius: '5px',
         borderBottomLeftRadius: '5px',
-        marginLeft: '48.5px'
     }
 
     const dollarButtonStyle = {
@@ -28,11 +26,11 @@ class Dollar extends Component {
         backgroundImage: "url(" + "https://i.ibb.co/n3B2C1R/dollar.png" + ")",
         backgroundSize: '100%',
         backgroundColor: '#85bb65',
-        padding: '3.7%',
+        padding: '56px',
         position: 'absolute',
         borderRadius: '50%',
         marginTop: '-55px',
-        marginLeft: '-36px',
+        marginLeft: '-50px',
     }
 
         return(

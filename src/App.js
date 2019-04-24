@@ -124,7 +124,7 @@ class App extends Component {
     }
     
     return (
-      <div className="App">
+      <div id="content" className="App">
         <Total basket={this.state.basketItems}/>
         { doubleC ? <Dollar dollarBtn={this.dollarOnClickHandler}/> : <Bitcoin btcDoubleBtn={this.bitcoinOnDoubleClickHandler} btcBtn={this.bitcoinOnClickHandler}/>}
         <ul style={ulStyle}>

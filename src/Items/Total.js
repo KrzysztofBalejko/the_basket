@@ -26,9 +26,9 @@ class Total extends Component {
             borderTopRightRadius: '25px',
             borderTopLeftRadius: '25px',
             padding: '10px',
-            marginRight: '-37px',
+            // marginRight: '-38px',
             textAlign: 'center',
-            width: '24.8rem'
+            width: '24.9rem'
         }
 
         const estTotalStyle = {

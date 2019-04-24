@@ -3,8 +3,18 @@
   font-size: 20px;
   margin: 0 auto;
   max-width: 33.33%;
-
 }
+
+#content{
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+}
+
 
 
 

@@ -6,11 +6,17 @@ class Items extends Component {
     render() {
 
         const liStyle = {
+            // display: 'flex',
+            // alignItems: 'stretch',
+
             border: '1px solid black',
             borderRadius: "5px",
             padding: '10px',
             margin: '10px',
-            backgroundColor: '#EE9542'
+            marginLeft: '-30px',
+            width: '400px',
+            backgroundColor: '#EE9542',
+            
         }
 
         const btnStyle = {
