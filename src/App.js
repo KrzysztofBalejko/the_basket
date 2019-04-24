@@ -8,7 +8,7 @@ import Dollar from './Items/Dollar'
 import uuid from 'uuid'
 import axios from 'axios'
 
-let DoubleC = false;
+let doubleC = false;
 let btcClickCount = 0;
 let tempTotal = 0;
 
@@ -54,44 +54,57 @@ class App extends Component {
   }
 
   bitcoinOnDoubleClickHandler = () => {
-    btcClickCount += 2;
-    DoubleC ? (DoubleC = false) : (DoubleC = true);
+    document.getElementById('#total').innerHTML = tempTotal
+    btcClickCount === 1 ? btcClickCount -= 1 : btcClickCount += 2;
+    doubleC ? (doubleC = false) : (doubleC = true);
+    this.changeColor('#85bb65')
     this.setState({
       refreshState:[
         { refresh: true }
       ]
     })
-    
   }
+
+  changeColor = (color) => {
+    let block = document.getElementsByClassName('selected');
+      for (let i = 0; i < block.length; i++) {
+      block[i].style.backgroundColor = color;
+    }
+  };
 
   bitcoinOnClickHandler = () => {
     let total = parseInt(document.getElementById('#total').innerHTML);
     let satoshiLimit = ((total / this.state.crypto[0].btc).toString()).slice(0,10);
-
     if (btcClickCount === 0){
       btcClickCount += 1;
       tempTotal = total;
       document.getElementById('bitbtn').style.backgroundImage = "url(" + "https://i.ibb.co/CBJgqy4/pound.png" + ")"
+      document.getElementById('bitbtn').style.backgroundColor = '#87CEFA';
       document.getElementById('#total').innerHTML = satoshiLimit;
-    } else {
+      this.changeColor('#87CEFA');
+    } else if(btcClickCount === 1){
       btcClickCount -= 1;
       document.getElementById('bitbtn').style.backgroundImage = "url(" + "https://i.ibb.co/W0900fG/bitcoin.png" + ")"
       document.getElementById('#total').innerHTML = tempTotal;
+      this.changeColor('#EE9542');
     }
   }
 
   dollarOnClickHandler = () => {
-
+    let total = parseInt(document.getElementById('#total').innerHTML);
     if (btcClickCount === 2){
+      tempTotal = total;
       btcClickCount -= 2;
       document.getElementById('dolBtn').style.backgroundImage = "url(" + "https://i.ibb.co/CBJgqy4/pound.png" + ")"
-      document.getElementById('dolBtn').style.backgroundColor = '#EE9542'
+      document.getElementById('dolBtn').style.backgroundColor = '#87CEFA'
       document.getElementById('#total').innerHTML = this.state.currency[0].usd * tempTotal
+      this.changeColor('#87CEFA');
     } else if(btcClickCount === 0) {
       btcClickCount += 2;
+      this.changeColor('#85bb65')
       document.getElementById('dolBtn').style.backgroundImage = "url(" + "https://i.ibb.co/n3B2C1R/dollar.png" + ")"
       document.getElementById('#total').innerHTML = tempTotal;
-    }
+    } 
   }
 
   onClickHandler = (id) => {
@@ -113,7 +126,7 @@ class App extends Component {
     return (
       <div className="App">
         <Total basket={this.state.basketItems}/>
-        { DoubleC ? <Dollar dollarBtn={this.dollarOnClickHandler}/> : <Bitcoin btcDoubleBtn={this.bitcoinOnDoubleClickHandler} btcBtn={this.bitcoinOnClickHandler} />}
+        { doubleC ? <Dollar dollarBtn={this.dollarOnClickHandler}/> : <Bitcoin btcDoubleBtn={this.bitcoinOnDoubleClickHandler} btcBtn={this.bitcoinOnClickHandler}/>}
         <ul style={ulStyle}>
           <Items 
             basket={this.state.basketItems} 

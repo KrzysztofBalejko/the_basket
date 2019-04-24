@@ -30,7 +30,7 @@ class Items extends Component {
  
         return (         
             this.props.basket.map((i) =>
-            <li style={liStyle} key={i.id}>
+            <li className="selected" style={liStyle} key={i.id}>
                 {i.item}
                 {i.price !== '' ? <span> £{i.price}</span> : null}
                 <button style={btnStyle} onClick={this.props.click.bind(this, i.id)} >

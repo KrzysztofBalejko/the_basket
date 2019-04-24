@@ -33,7 +33,6 @@ class Dollar extends Component {
         borderRadius: '50%',
         marginTop: '-55px',
         marginLeft: '-36px',
-        // boxShadow: 'inset 25px 5px 5px green'
     }
 
         return(
