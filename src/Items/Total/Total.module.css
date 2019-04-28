@@ -1,0 +1,26 @@
+.totalStyle {
+    border: 1px solid black;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+    padding: 10px;
+    text-align: center;
+    width: 24.9rem;
+}
+
+.estTotalStyle {
+    border: 1px solid black;
+    border-top-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-top-right-radius: 25px;
+    position: absolute;
+    padding: 10px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.74);
+}
+
+.sumStyle {
+    float: right;
+    margin-top: 10px;
+    margin-left: 280px;
+    position: absolute;
+}
