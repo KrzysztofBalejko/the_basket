@@ -1,26 +1,27 @@
-.box1Style {  
+@mixin backgroundColorBorderWidth{
     background-color: rgba(0, 0, 0, 0.74);
     color: white;
-    width: 418px;
-    padding: 0px;
     border: 1px solid black;
+    width: 418px; 
+}
+
+$bitButtonColor: #EE9542;
+
+.box1Style {
+    @include backgroundColorBorderWidth();
 }
 
 .box2Style {
-    background-color: rgba(0, 0, 0, 0.74);
-    color: white;
-    width: 418px;
-    padding: 0px;
-    border: 1px solid black;
+    @include backgroundColorBorderWidth();
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
 }
 
 .bitButtonStyle {
-    border: #EE9542;
+    border: $bitButtonColor;
     background-image: url(https://i.ibb.co/W0900fG/bitcoin.png);
     background-size: 100%;
-    background-color: #EE9542;
+    background-color: $bitButtonColor;
     padding: 56px;
     position: absolute;
     border-radius: 50%;
