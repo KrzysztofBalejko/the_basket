@@ -92,12 +92,13 @@ class App extends Component {
 
   dollarOnClickHandler = () => {
     let total = parseInt(document.getElementById('#total').innerHTML);
+    
     if (btcClickCount === 2){
-      tempTotal = total;
+      tempTotal = total;   
       btcClickCount -= 2;
       document.getElementById('dolBtn').style.backgroundImage = "url(" + "https://i.ibb.co/CBJgqy4/pound.png" + ")"
       document.getElementById('dolBtn').style.backgroundColor = '#87CEFA'
-      document.getElementById('#total').innerHTML = this.state.currency[0].usd * tempTotal
+      document.getElementById('#total').innerHTML = Math.floor(this.state.currency[0].usd * tempTotal)
       this.changeColor('#87CEFA');
     } else if(btcClickCount === 0) {
       btcClickCount += 2;
