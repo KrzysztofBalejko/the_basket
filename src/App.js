@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Items from './Items/Items'
-import AddItems from './Items/AddItems'
+import AddItems from './Items/AddItems/AddItems'
 import Total from './Items/Total'
 import Bitcoin from './Items/Bitcoin'
 import Dollar from './Items/Dollar'
