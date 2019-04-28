@@ -1,26 +1,27 @@
-.box1Style {  
+@mixin backgroundBorderColorWidth{
     background-color: rgba(0, 0, 0, 0.74);
+    border: 1px solid black;
     color: white;
     width: 418px;
-    padding: 0px;
-    border: 1px solid black;
+}
+
+$dollarBtnColor: #85bb65;
+
+.box1Style {
+    @include backgroundBorderColorWidth();  
 }
 
 .box2Style {
-    background-color: rgba(0, 0, 0, 0.74);
-    color: white;
-    width: 418px;
-    padding: 0px;
-    border: 1px solid black;
+    @include backgroundBorderColorWidth();  
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
 }
 
 .dollarButtonStyle {
-    border: #85bb65;
+    border: $dollarBtnColor;
     background-image: url(https://i.ibb.co/n3B2C1R/dollar.png);
     background-size: 100%;
-    background-color: #85bb65;
+    background-color: $dollarBtnColor;
     padding: 56px;
     position: absolute;
     border-radius: 50%;
