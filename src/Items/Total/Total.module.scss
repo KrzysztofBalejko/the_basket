@@ -1,19 +1,20 @@
-.totalStyle {
+@mixin borderPadding{
     border: 1px solid black;
     border-top-right-radius: 25px;
     border-top-left-radius: 25px;
     padding: 10px;
+}
+
+.totalStyle {
+    @include borderPadding();
     text-align: center;
     width: 24.9rem;
 }
 
 .estTotalStyle {
-    border: 1px solid black;
-    border-top-left-radius: 25px;
+    @include borderPadding();
     border-bottom-right-radius: 25px;
-    border-top-right-radius: 25px;
     position: absolute;
-    padding: 10px;
     color: white;
     background-color: rgba(0, 0, 0, 0.74);
 }
