@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Items from './Items/Items'
 import AddItems from './Items/AddItems/AddItems'
-import Total from './Items/Total'
+import Total from './Items/Total/Total'
 import Bitcoin from './Items/Bitcoin/Bitcoin'
 import Dollar from './Items/Dollar/Dollar'
 import uuid from 'uuid'
