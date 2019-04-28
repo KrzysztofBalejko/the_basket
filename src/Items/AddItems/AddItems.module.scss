@@ -1,39 +1,39 @@
-.inputStyle {
+@mixin borderAndPadding {
     border: 1px solid black;
     border-radius: 5px;
     padding: 10px;
+}
+
+@mixin color {
+    background-color: rgba(0, 0, 0, 0.74);
+    color: white;
+}
+
+.inputStyle {
+    @include borderAndPadding();
     margin-bottom: 5px;
     text-align: center;
     width: 24.8rem;
 }
 
 .buttonStyle {
-    border: 1px solid black;
-    border-radius: 5px;
+    @include borderAndPadding();
+    @include color();
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
-    background-color: rgba(0, 0, 0, 0.74);
-    color: white;
-    padding: 10px;
     text-align: center;
     width: 26.1rem;
 }
 
 .poundStyle {
-    border: 1px solid black;
-    border-radius: 5px;
+    @include borderAndPadding();
+    @include color();
     position: absolute;
-    padding: 10px;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.74);
 }
 
 .zerosStyle {
-    border: 1px solid black;
-    border-radius: 5px;
-    position: absolute;
-    padding: 10px;
+    @include borderAndPadding();
+    @include color();
     margin-left: -53px;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.74);
+    position: absolute;
 }
