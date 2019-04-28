@@ -2,14 +2,14 @@ describe('Item', function (){
 
     it ("displays list items", function(){
         cy.visit('http://localhost:3000')
-        cy.get('li').should('contain', 'milk')
+        cy.get('li').should('contain', 'GPU')
     })
 
     it ("list item can be deleted", function(){
         cy.visit('http://localhost:3000')
-        cy.get('li').should('contain', 'cocacola')
+        cy.get('li').should('contain', 'GPU')
         cy.get('button').click({ multiple: true, force: true })
-        cy.get('li').should('not.contain', 'cocacola')
+        cy.get('li').should('not.contain', 'GPU')
     })
 
     it ("adds new item to the list", function(){
@@ -37,6 +37,5 @@ describe('Item', function (){
         cy.get('button').click({ multiple: true, force: true })
         cy.get('span').should('contain', '5')
     })
-
 
 })
