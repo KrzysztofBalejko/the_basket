@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import classes from './Items.module.css'
+import classes from './Items.module.scss'
 
 class Items extends Component {
 

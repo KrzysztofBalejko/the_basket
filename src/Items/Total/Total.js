@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import classes from './Total.module.css'
+import classes from './Total.module.scss'
 
 class Total extends Component {
 

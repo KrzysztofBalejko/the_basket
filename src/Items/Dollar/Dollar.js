@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import classes from './Dollar.module.css'
+import classes from './Dollar.module.scss'
 
 class Dollar extends Component {
 

@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import classes from './Bitcoin.module.css'
+import classes from './Bitcoin.module.scss'
 
 class Bitcoin extends  Component {
 
