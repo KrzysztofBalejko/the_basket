@@ -16,6 +16,17 @@ Additional functionality:
 * Calculates the total price in Bitcoin
 * With a double click user can see the total in USD
 * User can go back to GBP/USD exchange
+---------------
+
+Tech used for this little project:
+
+* JavaScript
+* React
+* CSS
+* SASS
+* Cypress
+
+---------------
 
 # Application interface:
 
